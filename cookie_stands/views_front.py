@@ -13,18 +13,26 @@ class CookieStandListView(LoginRequiredMixin, ListView):
 class CookieStandDetailView(LoginRequiredMixin, DetailView):
     template_name = "cookie_stands/cookie_stands_detail.html"
     model = CookieStand
+    context_object_name = "cookie_stand"
 
 
 class CookieStandUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "cookie_stands/cookie_stands_update.html"
     model = CookieStand
-    fields = "__all__"
+    context_object_name = "cookie_stand"
+    fields = [
+        "location", "description", "owner", "minimum_customers_per_hour",
+        "maximum_customers_per_hour", "average_cookies_per_sale"
+        ] # OR "__all__" for all of them
 
 
 class CookieStandCreateView(LoginRequiredMixin, CreateView):
     template_name = "cookie_stands/cookie_stands_create.html"
     model = CookieStand
-    fields = ["name", "rating", "reviewer"] # "__all__" for all of them
+    fields = [
+        "location", "description", "owner", "minimum_customers_per_hour",
+        "maximum_customers_per_hour", "average_cookies_per_sale"
+        ] # OR "__all__" for all of them
 
 
 class CookieStandDeleteView(LoginRequiredMixin, DeleteView):

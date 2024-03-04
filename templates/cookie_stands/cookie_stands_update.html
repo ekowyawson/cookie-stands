@@ -12,41 +12,62 @@
     class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
     <form class="space-y-6" method="POST">
       {% csrf_token %}
-      <h5 class="text-xl font-medium text-gray-900 dark:text-white">Update a Cookie</h5>
+      <h5 class="text-xl font-medium text-gray-900 dark:text-white">Update a Stand</h5>
+      <!-- LOCATION -->
       <div>
-        <label for="id_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-        <input type="text" name="name" id="id_name"
+        <label for="id_location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
+        <input type="text" name="location" id="id_location"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-               required value="{{ cookies.name }}">
-
+               required value="{{ cookie_stand.location }}">
       </div>
+      <!-- DESCRIPTION -->
       <div>
-        <label for="id_rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
-        <input type="number" name="rating" id="id_rating"
-               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-               value="{{ cookies.rating }}" min="0" max="5" required>
+        <label for="id_description"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+        <textarea name="description" id="id_description"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>{{ cookie_stand.description }}</textarea>
       </div>
+      <!-- OWNER -->
       <div>
-        <label for="id_reviewer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reviewer</label>
-        <select name="reviewer" id="id_reviewer">
-          {% for value, choice in form.fields.reviewer.choices %}
-            <option value="{{ value }}" {% if value == cookies.reviewer.id %}selected{% endif %}>{{ choice }}</option>
+        <label for="id_owner" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Owner</label>
+        <select name="owner" id="id_owner">
+          {% for value, choice in form.fields.owner.choices %}
+            <option value="{{ value }}" {% if value == cookie_stand.owner.id %}selected{% endif %}>{{ choice }}</option>
           {% endfor %}
         </select>
       </div>
-
+      <!-- MINIMUM CUSTOMERS PER HOUR -->
       <div>
-        <label for="id_description"
-               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-        <textarea name="description" id="id_description"
+        <label for="id_min_customers"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Minimum
+          Customers Per Hour</label>
+        <input type="number" name="minimum_customers_per_hour" id="id_min_customers"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="e.g. Celery gets a bad wrap" required>{{ cookies.description }}</textarea>
+                  value="{{ cookie_stand.minimum_customers_per_hour }}" required>
+      </div>
+      <!-- MAXIMUM CUSTOMERS PER HOUR -->
+      <div>
+        <label for="id_max_customers"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maximum
+          Customers Per Hour</label>
+        <input type="number" name="maximum_customers_per_hour" id="id_max_customers"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  value="{{ cookie_stand.maximum_customers_per_hour }}" required>
+      </div>
+      <!-- AVERAGE COOKIES PER SALE -->
+      <div>
+        <label for="id_average_cookies"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Average
+          Cookies Per Sale</label>
+        <input type="number" name="average_cookies_per_sale" id="id_average_cookies"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  value="{{ cookie_stand.average_cookies_per_sale }}" required>
       </div>
 
 
       <button type="submit"
               class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        SAVE
+        Save
       </button>
 
     </form>

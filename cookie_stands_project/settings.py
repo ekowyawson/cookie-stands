@@ -59,10 +59,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party
     "rest_framework",
+    "rest_framework_simplejwt",
     "corsheaders",
     # local
     "accounts",
     "cookie_stands",
+    # "posts.apps.PostsConfig",
+    # "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [

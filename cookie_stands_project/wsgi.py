@@ -14,3 +14,6 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cookie_stands_project.settings')
 
 application = get_wsgi_application()
+
+# Add an alias for Vercel deployment compatibility
+app = application

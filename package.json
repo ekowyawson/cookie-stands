@@ -1,12 +1,13 @@
 {
-  "name": "cookie-stands-api",
+  "name": "django-vercel-deployment",
   "version": "1.0.0",
-  "description": "## Project: Cookie Stands",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "pip install -r requirements.txt",
+    "migrate": "python manage.py migrate",
+    "createadmin": "python manage.py createadmin",
+    "build": "echo 'Build step (if any)'",
+    "vercel-postbuild": "npm run migrate && npm run createadmin"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {},
+  "devDependencies": {}
 }

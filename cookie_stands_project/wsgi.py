@@ -18,4 +18,4 @@ application = get_wsgi_application()
 # Add an alias for Vercel deployment compatibility
 app = application
 # Automatically create an admin user
-call_command('createadmin')
+# call_command('createadmin')

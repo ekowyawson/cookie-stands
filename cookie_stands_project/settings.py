@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import environ
+import os
+
+VERCEL_DOMAIN = os.environ.get('VERCEL_DOMAIN')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +49,10 @@ SECRET_KEY = env.str("SECRET_KEY")
 
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = tuple(env.list("ALLOWED_HOSTS"))
+if VERCEL_DOMAIN:
+    ALLOWED_HOSTS = [f'.{VERCEL_DOMAIN}']  # Allows any subdomain
+else:
+    ALLOWED_HOSTS = tuple(env.list("ALLOWED_HOSTS"))
 
 
 # Application definition

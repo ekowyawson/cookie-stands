@@ -9,6 +9,11 @@
 - Stephanie Johnson
 - Latherio Kidd
 
+## Deployed URL's
+
+[Cookie-Stands-API](https://cookie-stands-api.vercel.app/)
+[Cookie-Stands-Admin](https://cookie-stand-admin-liart-ten.vercel.app/)
+
 ### Overview
 
 Cookie Stand project with CRUD API and Django Rest Framework.
